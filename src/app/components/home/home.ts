@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Affliction } from '../../intefaces/affliction';
-import { PreventionTip } from '../../intefaces/prevention-tip';
-import { BodyPartInfo } from '../../intefaces/body-part-info';
+import { Affliction } from '../../interfaces/affliction';
+import { PreventionTip } from '../../interfaces/prevention-tip';
+import { BodyPartInfo } from '../../interfaces/body-part-info';
 
 @Component({
   selector: 'app-home',
@@ -14,16 +14,55 @@ export class Home {
   hoverPart: string | null = null;
 
   bodyParts = [
-    { id: 'head', label: 'Head', position: 'top-4 left-1/2 transform -translate-x-1/2' },
-    { id: 'brain', label: 'Brain', position: 'top-6 left-1/2 transform -translate-x-1/2' },
-    { id: 'eyes', label: 'Eyes', position: 'top-8 left-1/2 transform -translate-x-1/2' },
-    { id: 'heart', label: 'Heart', position: 'top-28 left-1/2 transform -translate-x-1/2' },
-    { id: 'lungs', label: 'Lungs', position: 'top-24 left-8' },
-    { id: 'lungs-right', label: '', position: 'top-24 right-8' },
-    { id: 'stomach', label: 'Stomach', position: 'top-44 left-1/2 transform -translate-x-1/2' },
-    { id: 'liver', label: 'Liver', position: 'top-40 right-8' },
-    { id: 'kidneys', label: 'Kidneys', position: 'top-52 left-6' },
-    { id: 'kidneys-right', label: '', position: 'top-52 right-6' }
+    { 
+      id: 'brain', 
+      label: 'brain', 
+      top: '12.7%', 
+      left: '80%',
+      description: 'El cerebro controla todas las funciones del cuerpo y procesa la información sensorial.'
+    },
+    { 
+      id: 'eyes', 
+      label: 'eyes', 
+      top: '22.7%', 
+      left: '80%',
+      description: 'Los ojos permiten la visión al captar la luz y enviarla al cerebro.'
+    }, 
+    { 
+      id: 'lungs', 
+      label: 'lungs', 
+      top: '32.4%', 
+      left: '80%',
+      description: 'Los pulmones permiten el intercambio de oxígeno y dióxido de carbono.'
+    },  
+    { 
+      id: 'heart', 
+      label: 'heart', 
+      top: '42%', 
+      left: '80%',
+      description: 'El corazón bombea sangre a todo el cuerpo.'
+    },
+    { 
+      id: 'stomach', 
+      label: 'stomach', 
+      top: '51.6%', 
+      left: '80%',
+      description: 'El estómago digiere los alimentos mediante ácidos y enzimas.'
+    },
+    { 
+      id: 'liver', 
+      label: 'liver', 
+      top: '61.3%', 
+      left: '80%',
+      description: 'El hígado procesa nutrientes y filtra toxinas de la sangre.'
+    },
+    { 
+      id: 'kidneys', 
+      label: 'kidneys', 
+      top: '70.8%', 
+      left: '80%',
+      description: 'Los riñones filtran la sangre y producen orina.'
+    },
   ];
 
   bodyPartData: { [key: string]: BodyPartInfo } = {
@@ -399,49 +438,25 @@ export class Home {
     this.selectedPart = null;
   }
 
-  getBodyPartClasses(partId: string): string {
-    const baseClasses = 'absolute body-part cursor-pointer bg-blue-400/70 hover:bg-blue-500/80 border-2 border-blue-300 hover:border-blue-600 rounded-full flex items-center justify-center text-white font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300';
-    
-    const mappedPartId = partId.includes('-') ? partId.split('-')[0] : partId;
-    const isActive = this.selectedPart?.id === mappedPartId;
-    const isHovered = this.hoverPart === partId;
-    
-    let sizeClasses = '';
-    switch (partId) {
-      case 'head':
-        sizeClasses = 'w-12 h-12 text-xs';
-        break;
-      case 'brain':
-        sizeClasses = 'w-10 h-8 text-xs rounded-lg';
-        break;
-      case 'eyes':
-        sizeClasses = 'w-8 h-4 text-xs rounded-full';
-        break;
-      case 'heart':
-        sizeClasses = 'w-10 h-9 text-xs';
-        break;
-      case 'lungs':
-      case 'lungs-right':
-        sizeClasses = 'w-8 h-12 text-xs rounded-lg';
-        break;
-      case 'stomach':
-        sizeClasses = 'w-12 h-10 text-xs';
-        break;
-      case 'liver':
-        sizeClasses = 'w-11 h-8 text-xs rounded-lg';
-        break;
-      case 'kidneys':
-      case 'kidneys-right':
-        sizeClasses = 'w-6 h-10 text-xs rounded-lg';
-        break;
-      default:
-        sizeClasses = 'w-10 h-10 text-xs';
-    }
+  getButtonClasses(organ: string): string {
+    const baseClasses = `
+      absolute transform -translate-x-1/2 -translate-y-1/2 
+      px-2 py-1.5 md:px-2 md:py-1.5
+      text-sm md:text-sm font-semibold
+      rounded-full shadow-lg
+      transition-all duration-300 ease-in-out
+      hover:scale-110 hover:shadow-xl
+      focus:outline-none focus:ring-2 focus:ring-offset-1
+      border-2 border-indigo-500
+      backdrop-blur-sm bg-opacity-95
+    `;
 
-    const activeClasses = isActive ? 'active bg-blue-600/90 border-purple-500 scale-115' : '';
-    const hoverClasses = isHovered ? 'scale-110' : '';
-    
-    return `${baseClasses} ${sizeClasses} ${activeClasses} ${hoverClasses}`;
+    const isSelected = this.selectedPart?.id === organ;
+    const stateClasses = isSelected
+      ? 'bg-indigo-600 text-white ring-4 ring-indigo-300 scale-110'
+      : 'bg-white text-indigo-700 hover:bg-indigo-50';
+
+    return `${baseClasses} ${stateClasses}`;
   }
 
   getBodyPartPosition(partId: string): { [key: string]: string } {
