@@ -1,10 +1,10 @@
-<div class="min-h-screen bg-gradient-to-br from-blue-400 via-purple-500 to-purple-700 p-4 lg:p-8">
+<div class="min-h-screen font-outfit bg-gradient-to-br from-blue-300 via-blue-400 to-blue-600 p-4 lg:p-8">
     <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
         <!-- Header -->
         <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 text-center">
             <h1
-                class="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-yellow-200 to-yellow-400 bg-clip-text text-transparent">
-                🏥 Interactive Body Health Guide
+                class="text-4xl lg:text-5xl font-bold mb-4 text-yellow-50 bg-clip-text text-transparent">
+                <span>🏥</span> Interactive Body Health Guide
             </h1>
             <p class="text-blue-100 text-lg">Click on body parts to explore health information</p>
         </div>
@@ -16,11 +16,11 @@
                 <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 shadow-lg">
                     <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Select a Body Part</h2>
 
-                    <div class="relative mx-auto w-64 h-96 flex justify-center">
+                    <div class="relative mx-auto w-80 h-96 flex justify-center">
 
 
                         <!-- Body Outline -->
-                        <div class="relative w-full max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+                        <div class="relative w-full max-w-2xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden">
                             <!-- Imagen del cuerpo humano -->
                             <img src="assets/healtcheck-web.svg" alt="Cuerpo humano con órganos"
                                 class="w-full h-auto" />
@@ -30,7 +30,7 @@
                             <button (click)="selectBodyPart(organ.id)" [class]="getButtonClasses(organ.id)"
                                 [style.top]="organ.top" [style.left]="organ.left">
                                 <span class="flex items-center gap-1 md:gap-2">
-                                    <img src="assets/brain.png" alt="{{ organ.label }} icon"
+                                    <img [src]="'assets/'+organ.id+'.png'" alt="{{ organ.label }} icon"
                                         class="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                                     <span class="hidden sm:inline line-clamp-2">{{ organ.label }}</span>
                                     <span class="sm:hidden">{{ organ.label.substring(0, 3) }}</span>
@@ -38,17 +38,6 @@
                             </button>                           
                             }
                         </div>
-
-                        <!-- Interactive body parts
-                        @for (part of bodyParts; track part.id) {
-                       
-                        <div [class]="getBodyPartClasses(part.id)" [style]="getBodyPartPosition(part.id)"
-                            (click)="selectBodyPart(part.id)" (mouseenter)="hoverPart = part.id"
-                            (mouseleave)="hoverPart = null">
-                            <span class="text-xs font-semibold">{{ part.label }}</span>
-                        </div>
-                        }-->
-
                     </div>
 
                     <!-- Legend -->

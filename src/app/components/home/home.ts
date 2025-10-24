@@ -16,52 +16,45 @@ export class Home {
   bodyParts = [
     { 
       id: 'brain', 
-      label: 'brain', 
-      top: '12.7%', 
-      left: '80%',
-      description: 'El cerebro controla todas las funciones del cuerpo y procesa la información sensorial.'
+      label: 'Brain', 
+      top: '16%', 
+      left: '80%'      
     },
     { 
       id: 'eyes', 
-      label: 'eyes', 
-      top: '22.7%', 
-      left: '80%',
-      description: 'Los ojos permiten la visión al captar la luz y enviarla al cerebro.'
+      label: 'Eyes', 
+      top: '28%', 
+      left: '80%'
     }, 
     { 
       id: 'lungs', 
-      label: 'lungs', 
-      top: '32.4%', 
-      left: '80%',
-      description: 'Los pulmones permiten el intercambio de oxígeno y dióxido de carbono.'
+      label: 'Lungs', 
+      top: '40%', 
+      left: '80%'
     },  
     { 
       id: 'heart', 
-      label: 'heart', 
-      top: '42%', 
-      left: '80%',
-      description: 'El corazón bombea sangre a todo el cuerpo.'
+      label: 'Heart', 
+      top: '52%', 
+      left: '80%'
     },
     { 
       id: 'stomach', 
-      label: 'stomach', 
-      top: '51.6%', 
-      left: '80%',
-      description: 'El estómago digiere los alimentos mediante ácidos y enzimas.'
+      label: 'Stomach', 
+      top: '64%', 
+      left: '80%'
     },
     { 
       id: 'liver', 
-      label: 'liver', 
-      top: '61.3%', 
-      left: '80%',
-      description: 'El hígado procesa nutrientes y filtra toxinas de la sangre.'
+      label: 'Liver', 
+      top: '76%', 
+      left: '80%'
     },
     { 
       id: 'kidneys', 
-      label: 'kidneys', 
-      top: '70.8%', 
-      left: '80%',
-      description: 'Los riñones filtran la sangre y producen orina.'
+      label: 'Kidneys', 
+      top: '88%', 
+      left: '80%'
     },
   ];
 
@@ -441,7 +434,7 @@ export class Home {
   getButtonClasses(organ: string): string {
     const baseClasses = `
       absolute transform -translate-x-1/2 -translate-y-1/2 
-      px-2 py-1.5 md:px-2 md:py-1.5
+      px-2 py-1.5 md:px-3 md:py-2.5
       text-sm md:text-sm font-semibold
       rounded-full shadow-lg
       transition-all duration-300 ease-in-out
